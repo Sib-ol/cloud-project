@@ -24,7 +24,7 @@ def home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),  # root path
-    path('api/', include('accounts.urls')),  # adjust 'accounts' if your app has a different name
+    path('api/', include('account.urls')),  # adjust 'accounts' if your app has a different name
 ]
 
 
