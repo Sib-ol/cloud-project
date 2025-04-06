@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: cloud-auth-backend
+    env: python
+    repo: https://github.com/Sib-ol/cloud-project
+    branch: main
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn authAPI.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        value: "your-very-secret-key"  # Replace this with your actual key
+      - key: ALLOWED_HOSTS
+        value: cloud-auth-backend.onrender.com
+    buildFilter:
+      paths:
+        - "Django-Authentication-API-main/**"
+    autoDeploy: true
+    rootDir: Django-Authentication-API-main
